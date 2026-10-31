@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Admin | Sapphire Suites</title><style>
+body{font:15px/1.5 system-ui,sans-serif;margin:0;background:#f3f5fa;color:#13203a}
+header{position:sticky;top:0;background:#0a1d3b;color:#fff;padding:12px 20px;display:flex;gap:10px;align-items:center;justify-content:space-between;z-index:5;flex-wrap:wrap}
+main{max-width:920px;margin:20px auto;padding:0 14px 90px}h2{margin:0 0 6px;font-size:20px;display:flex;justify-content:space-between;gap:10px}
+.c{background:#fff;border-radius:16px;padding:18px;margin:16px 0;box-shadow:0 2px 10px #0a1d3b14}
+label{display:block;font-size:12px;font-weight:600;margin:10px 0 3px;color:#5b6a86}
+input,textarea,select{width:100%;padding:9px 11px;border:1px solid #d5dbe8;border-radius:10px;font:inherit;box-sizing:border-box}
+.r{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0 12px}
+button{font:inherit;font-weight:600;padding:8px 16px;border-radius:99px;border:0;background:#1c4bb8;color:#fff;cursor:pointer}
+button.g{background:#e6eaf2;color:#13203a}button.x{background:#c0392b}
+.ims{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.im{position:relative}.im img{width:104px;height:78px;object-fit:contain;background:#eef1f7;border-radius:8px;cursor:pointer;display:block}
+.im b{position:absolute;top:2px;right:2px;background:#c0392b;color:#fff;border-radius:50%;width:20px;height:20px;text-align:center;cursor:pointer;line-height:20px}
+.s{border-left:3px solid #1c4bb8;padding-left:12px;margin-top:16px}small{color:#5b6a86}
+#msg{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#0a1d3b;color:#fff;padding:10px 18px;border-radius:99px;display:none;z-index:9;max-width:92vw}
+</style></head><body>
+<header><b>Sapphire Suites · Admin</b><span><button class="g" data-act="json">Download JSON</button> <button data-act="save">Save &amp; publish</button></span></header>
+<main><div class="c"><h2>GitHub connection</h2><small>Vercel redeploys from your GitHub repo. Token: GitHub → Settings → Developer settings → Fine-grained token → Contents: Read &amp; write. Stored only in this browser.</small>
+<div class="r"><div><label>Repo (owner/name)</label><input id="g1" placeholder="you/sapphire-suites"></div><div><label>Branch</label><input id="g2" value="main"></div><div><label>Token</label><input id="g3" type="password"></div></div></div>
+<div id="bk"></div><div id="app">Loading…</div></main><div id="msg"></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let D,pend={};const GH=JSON.parse(localStorage.gh||'{}');$('#g1').value=GH.repo||'';$('#g2').value=GH.branch||'main';$('#g3').value=GH.token||'';
+const msg=t=>{const m=$('#msg');m.textContent=t;m.style.display='block';clearTimeout(msg.t);msg.t=setTimeout(()=>m.style.display='none',5000)};
+const get=p=>p.split('.').reduce((o,k)=>o?.[k],D),set=(p,v)=>{const k=p.split('.'),l=k.pop();k.reduce((o,x)=>o[x],D)[l]=v};
+const u=p=>pend[p]?pend[p].url:p;
+const F=(l,p,o={})=>{let v=get(p);if(o.arr)v=(v||[]).join(', ');const a=`data-p="${p}"${o.arr?' data-arr=1':''}${o.num?' data-num=1':''}`;return `<div><label>${l}</label>${o.area?`<textarea rows="3" ${a}>${esc(v)}</textarea>`:`<input ${a} value="${esc(v)}">`}</div>`};
+const one=(l,p)=>`<div><label>${l}</label><div class="ims"><div class="im"><img src="${esc(u(get(p)))}" style="cursor:default"></div></div><input type="file" accept="image/*" data-up="s:${p}"></div>`;
+function render(){
+const B=[['Business name','brand.name'],['WhatsApp number (digits only, e.g. 923111122282)','brand.whatsapp'],['Phone','brand.phone'],['Email','brand.email'],['Address','brand.address'],['Instagram URL','brand.instagram'],['Facebook URL','brand.facebook'],['TikTok URL','brand.tiktok'],['YouTube URL','brand.youtube'],['Hero line 1','brand.heroLine1'],['Hero line 2','brand.heroLine2']];
+let h=`<div class="c"><h2>Site &amp; contact</h2><div class="r">${B.map(([l,p])=>F(l,p)).join('')}</div>${F('Hero subtitle','brand.heroSub')}${one('Hero image','brand.heroImage')}</div>
+<div class="c"><h2>Home stats</h2><div class="r">${D.stats.map((z,i)=>F('Number','stats.'+i+'.n')+F('Label','stats.'+i+'.l')).join('')}</div></div>
+<div class="c"><h2>About</h2>${F('Title','about.title')}${F('Text','about.text',{area:1})}${one('About image','about.image')}</div>
+<div class="c"><h2>Why choose us</h2><div class="r">${D.why.map((z,i)=>F('Heading','why.'+i+'.t')+F('Text','why.'+i+'.d')).join('')}</div></div>`;
+h+=D.listings.map((x,i)=>{const P='listings.'+i+'.';return `<div class="c"><h2><span>${esc(x.name||'New stay')}</span><button class="x" data-act="dl" data-i="${i}">Delete listing</button></h2>
+<div class="r">${F('Name',P+'name')}${F('Area',P+'area')}${F('Price per night (Rs)',P+'price',{num:1})}${F('Max guests',P+'guests')}${F('Baths',P+'baths')}${F('Airbnb link (optional)',P+'airbnb')}</div>
+${F('Description (leave empty to hide)',P+'desc',{area:1})}${F('Amenities (comma separated)',P+'amenities',{arr:1})}
+${x.sections.map((s,j)=>{const Q=P+'sections.'+j+'.';return `<div class="s"><div class="r">${F('Section title',Q+'title')}<div><label>Type</label><select data-p="${Q}type">${['lounge','bedroom','washroom','kitchen','other'].map(t=>`<option${t===s.type?' selected':''}>${t}</option>`).join('')}</select></div></div>${F('Detail (optional)',Q+'detail')}
+<div class="ims">${s.images.map((m,k)=>`<div class="im"><img src="${esc(u(m))}" title="Click = set as cover" data-act="cov" data-i="${i}" data-m="${esc(m)}" style="${x.cover===m?'outline:3px solid #1c4bb8':''}"><b data-act="ri" data-i="${i}" data-j="${j}" data-k="${k}">×</b></div>`).join('')}</div>
+<input type="file" accept="image/*" multiple data-up="${i}.${j}"> <button class="x" data-act="ds" data-i="${i}" data-j="${j}">Remove section</button></div>`}).join('')}
+<p><button class="g" data-act="as" data-i="${i}">+ Add section</button></p></div>`}).join('');
+h+=`<p><button data-act="al">+ Add new listing</button></p>`;$('#app').innerHTML=h}
+document.addEventListener('input',e=>{const t=e.target,p=t.dataset.p;if(!p)return;let v=t.value;if(t.dataset.arr)v=v.split(',').map(z=>z.trim()).filter(Boolean);if(t.dataset.num)v=v===''?'':Number(v);set(p,v)});
+document.addEventListener('change',async e=>{const t=e.target,d=t.dataset.up;if(!d)return;for(const f of t.files){const ext=(f.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,''),path=`/img/up-${Date.now()}-${Math.random().toString(36).slice(2,6)}.${ext}`;
+const b64=await new Promise(r=>{const R=new FileReader();R.onload=()=>r(R.result.split(',')[1]);R.readAsDataURL(f)});pend[path]={b64,url:URL.createObjectURL(f)};
+if(d.startsWith('s:'))set(d.slice(2),path);else{const[i,j]=d.split('.');D.listings[i].sections[j].images.push(path);if(!D.listings[i].cover)D.listings[i].cover=path}}render()});
+document.addEventListener('click',async e=>{const a=e.target.closest('[data-act]');if(!a)return;const{act,i,j,k,m}=a.dataset,L=D.listings;
+if(act==='cov'){L[i].cover=m;render()}
+else if(act==='ri'){const im=L[i].sections[j].images.splice(+k,1)[0];if(L[i].cover===im)L[i].cover=L[i].sections.flatMap(s=>s.images)[0]||'';render()}
+else if(act==='ds'){if(confirm('Remove this section?')){L[i].sections.splice(j,1);render()}}
+else if(act==='dl'){if(confirm('Delete this listing?')){L.splice(i,1);render()}}
+else if(act==='as'){L[i].sections.push({title:'New section',type:'other',detail:'',images:[]});render()}
+else if(act==='al'){L.push({id:'p'+Date.now().toString(36),name:'New stay',area:'',price:10000,guests:'',baths:'',airbnb:'',desc:'',amenities:[],cover:'',sections:[{title:'Lounge',type:'lounge',detail:'',images:[]}]});render()}
+else if(act==='json'){const l=document.createElement('a');l.href=URL.createObjectURL(new Blob([JSON.stringify(D,null,2)],{type:'application/json'}));l.download='site.json';l.click()}
+else if(act==='save')save()});
+async function put(path,content,text){const h={Authorization:'Bearer '+GH.token,Accept:'application/vnd.github+json'},api=`https://api.github.com/repos/${GH.repo}/contents/${path}`;let sha;const r=await fetch(api+'?ref='+GH.branch,{headers:h});if(r.ok)sha=(await r.json()).sha;
+const w=await fetch(api,{method:'PUT',headers:h,body:JSON.stringify({message:text,content,branch:GH.branch,sha})});if(!w.ok)throw new Error(path+' → '+(await w.text()).slice(0,140))}
+async function save(){Object.assign(GH,{repo:$('#g1').value.trim(),branch:$('#g2').value.trim()||'main',token:$('#g3').value.trim()});localStorage.gh=JSON.stringify(GH);
+if(!GH.repo||!GH.token)return msg('Enter repo and token first');const json=JSON.stringify(D,null,2);
+try{for(const p in pend){if(pend[p].done||!json.includes(p))continue;msg('Uploading '+p+'…');await put(p.slice(1),pend[p].b64,'Add image');pend[p].done=1}
+msg('Saving…');await put('data/site.json',btoa(unescape(encodeURIComponent(json))),'Update site content');msg('Saved. Vercel will redeploy in about 30 seconds.')}catch(err){msg('Failed: '+err.message)}}
+let BP=localStorage.ap||'';
+const bapi=async(m,body)=>{const r=await fetch('/api/bookings',{method:m,headers:{'Content-Type':'application/json','x-admin-password':BP},body:body?JSON.stringify(body):undefined});if(!r.ok)throw new Error(r.status==401?'Wrong admin password':r.status==500?'Not set up yet (see README: database + ADMIN_PASSWORD)':'Error '+r.status);return r.json()};
+const bshell=inner=>`<div class="c"><h2>Bookings</h2><div class="r"><div><label>Admin password</label><input id="ap" type="password" value="${esc(BP)}"></div></div><p><button data-b="load">Load bookings</button></p>${inner}</div>`;
+async function loadB(){BP=$('#ap')?.value??BP;localStorage.ap=BP;try{const L=await bapi('GET');$('#bk').innerHTML=bshell(L.length?L.map(o=>`<div class="s" style="margin-bottom:14px"><b>${esc(o.name)}</b> · <a href="tel:${esc(o.phone)}">${esc(o.phone)}</a> · <a target="_blank" href="https://wa.me/${esc(o.phone.replace(/\D/g,''))}">WhatsApp</a><br>${esc(o.listing)} · ${esc(o.checkIn)} → ${esc(o.checkOut)} (${o.nights} nights) · ${esc(o.guests)} guests · Rs ${Number(o.total).toLocaleString()}<br>${o.notes?`<small>${esc(o.notes)}</small><br>`:''}<small>${new Date(o.createdAt).toLocaleString()}</small><br><select data-b="st" data-id="${o.id}">${['new','confirmed','cancelled'].map(t=>`<option${t===o.status?' selected':''}>${t}</option>`).join('')}</select> <button class="x" data-b="del" data-id="${o.id}">Delete</button></div>`).join(''):'<p>No bookings yet.</p>')}catch(e){$('#bk').innerHTML=bshell(`<p style="color:#c0392b">${esc(e.message)}</p>`)}}
+$('#bk').addEventListener('click',async e=>{const t=e.target.closest('[data-b]');if(!t)return;if(t.dataset.b==='load')loadB();if(t.dataset.b==='del'&&confirm('Delete this booking?')){await bapi('DELETE',{id:t.dataset.id});loadB()}});
+$('#bk').addEventListener('change',async e=>{const t=e.target;if(t.dataset.b==='st')try{await bapi('PATCH',{id:t.dataset.id,status:t.value})}catch(x){msg(x.message)}});
+$('#bk').innerHTML=bshell('');if(BP)loadB();
+fetch('/data/site.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{D=j;D.listings.forEach(x=>x.sections.forEach(s=>s.images=s.images||[]));render()}).catch(()=>$('#app').textContent='Could not load /data/site.json (open this page from your deployed site).');
+</script></body></html>
