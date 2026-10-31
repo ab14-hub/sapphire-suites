@@ -1,0 +1,350 @@
+{
+  "brand": {
+    "name": "Sapphire Suites",
+    "heroImage": "/img/hero.jpg",
+    "heroLine1": "Discover your",
+    "heroLine2": "perfect stay.",
+    "heroSub": "Premium furnished apartments in Islamabad. Book direct on WhatsApp.",
+    "whatsapp": "923111122282",
+    "phone": "+92 311 1122282",
+    "email": "",
+    "address": "Islamabad, Pakistan",
+    "mapEmbed": "",
+    "instagram": "https://www.instagram.com/sapphire_suite",
+    "facebook": "",
+    "tiktok": "",
+    "youtube": ""
+  },
+  "stats": [
+    {
+      "n": "5",
+      "l": "Premium apartments"
+    },
+    {
+      "n": "2-Bed",
+      "l": "Spacious homes"
+    },
+    {
+      "n": "24/7",
+      "l": "WhatsApp support"
+    }
+  ],
+  "about": {
+    "title": "Hotel comfort, home space",
+    "text": "Sapphire Suites offers carefully furnished apartments in Islamabad for families, groups and business travellers. Every stay is styled for comfort, with real photos you can trust.",
+    "image": "/img/p3-18.jpg"
+  },
+  "why": [
+    {
+      "t": "Hand-picked apartments",
+      "d": "Each home is styled and photographed as it really is."
+    },
+    {
+      "t": "Book direct",
+      "d": "Message us on WhatsApp for dates, prices and quick answers."
+    },
+    {
+      "t": "Room to spread out",
+      "d": "Two bedrooms, a full lounge and a kitchen."
+    },
+    {
+      "t": "Prime locations",
+      "d": "Easy access to markets, dining and main roads."
+    }
+  ],
+  "listings": [
+    {
+      "id": "p1",
+      "name": "Sapphire Suite One",
+      "area": "",
+      "price": 12000,
+      "guests": "",
+      "baths": "",
+      "airbnb": "",
+      "desc": "",
+      "amenities": [
+        "Air conditioning",
+        "TV"
+      ],
+      "cover": "/img/p1-1.jpg",
+      "sections": [
+        {
+          "title": "Lounge",
+          "type": "lounge",
+          "detail": "",
+          "images": [
+            "/img/p1-1.jpg"
+          ]
+        },
+        {
+          "title": "Bedroom 1",
+          "type": "bedroom",
+          "detail": "",
+          "images": [
+            "/img/p1-2.jpg"
+          ]
+        },
+        {
+          "title": "Bedroom 2",
+          "type": "bedroom",
+          "detail": "",
+          "images": [
+            "/img/p1-3.jpg"
+          ]
+        },
+        {
+          "title": "Washroom",
+          "type": "washroom",
+          "detail": "",
+          "images": [
+            "/img/p1-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "name": "The Diplomat Club · 2BHK",
+      "area": "F-11, Islamabad",
+      "price": 16500,
+      "guests": 6,
+      "baths": 2,
+      "airbnb": "https://www.airbnb.com/l/JLdk3Hdz",
+      "desc": "Spacious 1,250 sq. ft. 2-bedroom apartment a few steps from F-11 Markaz. Comfortable and relaxing, with hot water, air conditioning, heating and all the essentials.",
+      "amenities": [
+        "Kitchen",
+        "Wifi",
+        "Free parking",
+        "TV",
+        "Washer",
+        "Air conditioning",
+        "Heating",
+        "Hot water"
+      ],
+      "cover": "/img/p2-5.jpg",
+      "sections": [
+        {
+          "title": "Lounge",
+          "type": "lounge",
+          "detail": "",
+          "images": [
+            "/img/p2-5.jpg",
+            "/img/p2-6.jpg",
+            "/img/p2-7.jpg",
+            "/img/p2-8.jpg"
+          ]
+        },
+        {
+          "title": "Bedroom 1",
+          "type": "bedroom",
+          "detail": "",
+          "images": [
+            "/img/p2-9.jpg",
+            "/img/p2-10.jpg",
+            "/img/p2-11.jpg"
+          ]
+        },
+        {
+          "title": "Bedroom 2",
+          "type": "bedroom",
+          "detail": "",
+          "images": [
+            "/img/p2-12.jpg",
+            "/img/p2-13.jpg"
+          ]
+        },
+        {
+          "title": "Washroom",
+          "type": "washroom",
+          "detail": "",
+          "images": [
+            "/img/p2-14.jpg"
+          ]
+        },
+        {
+          "title": "Kitchen",
+          "type": "kitchen",
+          "detail": "",
+          "images": [
+            "/img/p2-15.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "name": "Sapphire Suite Three",
+      "area": "",
+      "price": 23000,
+      "guests": "",
+      "baths": "",
+      "airbnb": "",
+      "desc": "",
+      "amenities": [
+        "Air conditioning",
+        "TV",
+        "Kitchen"
+      ],
+      "cover": "/img/p3-16.jpg",
+      "sections": [
+        {
+          "title": "Lounge",
+          "type": "lounge",
+          "detail": "",
+          "images": [
+            "/img/p3-16.jpg",
+            "/img/p3-17.jpg"
+          ]
+        },
+        {
+          "title": "Bedroom 1",
+          "type": "bedroom",
+          "detail": "",
+          "images": [
+            "/img/p3-18.jpg",
+            "/img/p3-19.jpg"
+          ]
+        },
+        {
+          "title": "Bedroom 2",
+          "type": "bedroom",
+          "detail": "",
+          "images": [
+            "/img/p3-20.jpg",
+            "/img/p3-21.jpg"
+          ]
+        },
+        {
+          "title": "Washroom",
+          "type": "washroom",
+          "detail": "",
+          "images": [
+            "/img/p3-22.jpg"
+          ]
+        },
+        {
+          "title": "Kitchen",
+          "type": "kitchen",
+          "detail": "",
+          "images": [
+            "/img/p3-23.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "name": "Sapphire Suite Four",
+      "area": "",
+      "price": 22000,
+      "guests": "",
+      "baths": "",
+      "airbnb": "",
+      "desc": "",
+      "amenities": [
+        "Air conditioning",
+        "TV",
+        "Kitchen"
+      ],
+      "cover": "/img/p4-24.jpg",
+      "sections": [
+        {
+          "title": "Lounge",
+          "type": "lounge",
+          "detail": "",
+          "images": [
+            "/img/p4-24.jpg",
+            "/img/p4-25.jpg",
+            "/img/p4-26.jpg"
+          ]
+        },
+        {
+          "title": "Bedroom 1",
+          "type": "bedroom",
+          "detail": "",
+          "images": [
+            "/img/p4-27.jpg",
+            "/img/p4-28.jpg"
+          ]
+        },
+        {
+          "title": "Bedroom 2",
+          "type": "bedroom",
+          "detail": "",
+          "images": [
+            "/img/p4-29.jpg"
+          ]
+        },
+        {
+          "title": "Washroom",
+          "type": "washroom",
+          "detail": "",
+          "images": [
+            "/img/p4-30.jpg"
+          ]
+        },
+        {
+          "title": "Kitchen",
+          "type": "kitchen",
+          "detail": "",
+          "images": [
+            "/img/p4-31.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "name": "Sapphire Suite Five",
+      "area": "",
+      "price": 21000,
+      "guests": "",
+      "baths": "",
+      "airbnb": "",
+      "desc": "",
+      "amenities": [
+        "Air conditioning",
+        "TV"
+      ],
+      "cover": "/img/p5-32.jpg",
+      "sections": [
+        {
+          "title": "Lounge",
+          "type": "lounge",
+          "detail": "",
+          "images": [
+            "/img/p5-32.jpg",
+            "/img/p5-33.jpg",
+            "/img/p5-34.jpg"
+          ]
+        },
+        {
+          "title": "Bedroom 1",
+          "type": "bedroom",
+          "detail": "",
+          "images": [
+            "/img/p5-35.jpg",
+            "/img/p5-36.jpg"
+          ]
+        },
+        {
+          "title": "Bedroom 2",
+          "type": "bedroom",
+          "detail": "",
+          "images": [
+            "/img/p5-37.jpg",
+            "/img/p5-38.jpg"
+          ]
+        },
+        {
+          "title": "Washroom",
+          "type": "washroom",
+          "detail": "",
+          "images": [
+            "/img/p5-39.jpg"
+          ]
+        }
+      ]
+    }
+  ]
+}
